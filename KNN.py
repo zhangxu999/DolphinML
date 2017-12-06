@@ -1,12 +1,12 @@
 
 # coding: utf-8
 
-# In[1]:
+# In[3]:
 
 import numpy as np
 
 
-# In[3]:
+# In[24]:
 
 class Knn():
     def __init__(self,**kwargs):
@@ -73,6 +73,44 @@ if __name__ == '__main__':
     k = Knn(topK=1)
     k.train(np.array([[0,0],[1,1],[9,10]]),np.array(['A','A','B']))
     k.predict(np.array([[0,1],[9,9],[3,3]]))
+
+
+# ## 测试3
+
+# In[30]:
+
+if __name__ == '__main__':
+    Int = {'largeDoses':3,'smallDoses':2,'didntLike':1}
+    def file2matrix(filename):
+        fr = open(filename)
+        numberOfLines = len(fr.readlines())         #get the number of lines in the file
+        returnMat = np.zeros((numberOfLines,3))        #prepare matrix to return
+        classLabelVector = []                       #prepare labels return   
+        fr = open(filename)
+        index = 0
+        for line in fr.readlines():
+            line = line.strip()
+            listFromLine = line.split('\t')
+            returnMat[index,:] = listFromLine[0:3]
+            classLabelVector.append(Int[listFromLine[-1]])
+            index += 1
+        return returnMat,classLabelVector
+
+    def autoNorm(dataSet):
+        minvals = dataSet.min(0)
+        maxvals = dataSet.max(0)
+        ranges = maxvals - minvals
+        normDataSet = np.zeros(np.shape(dataSet))
+        m =  dataSet.shape[0]
+        normDataSet = dataSet - np.tile(minvals,(m,1))
+        normDataSet = normDataSet/np.tile(ranges, (m,1))
+        return normDataSet , ranges,minvals
+    datingDatMat,datingLabels = file2matrix('../datingTestSet.txt')
+    normMat,ranges ,minvals = autoNorm(datingDatMat)
+
+    k = Knn(topK=4)
+    k.train(normMat[300:],np.array(datingLabels[300:]))
+    ret = k.predict(normMat[:300])
 
 
 # In[ ]:
