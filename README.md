@@ -8,8 +8,7 @@ DolphinML 无意于提供一个可用于工业环境的机器学习库，因此�
 ## 技术栈
 DolphinML使用Python编写，使用Numpy进行数值计算。推荐使用Jupyter 调试编写代码，代码中包含了对应的notebook文件。
 ## Q&A
-1. ### Q：我能将DolphinML用在我的产品中吗？
-   #### A：最好不要，DolphinML效率不是很高，并且没有非常完善的API。如果你要在教学和学习演示中应用，这是可以的。
-2. ### Q：学习看懂DolphinML需要什么样的基础？
-   #### A：必要的Python基础。和一点点机器学习基础。当然，建议读者同时研究一些常用的Numpy函数。
- 
+1.&ensp;&ensp;&ensp;Q：我能将DolphinML用在我的产品中吗？
+&ensp;&ensp;&ensp;&ensp;&ensp;A：最好不要，DolphinML效率不是很高，并且没有非常完善的API。如果你要在教学和学习演示中应用，这是可以的。
+2.&ensp;&ensp;&ensp;Q：学习看懂DolphinML需要什么样的基础？
+&ensp;&ensp;&ensp;&ensp;&ensp; A：必要的Python基础。和一点点机器学习基础。当然，建议读者同时研究一些常用的Numpy函数。
